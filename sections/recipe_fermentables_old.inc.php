@@ -188,7 +188,7 @@ if (!empty($row_log['brewAddition1'])) {
       $fermentables_adjunct .= "&nbsp;" . $_SESSION['measWeight2'] . "</td>" . "\n";
             $fermentables_adjunct .= "<td>";
             $adjunct_display = get_session_array_values($_SESSION['adjuncts'],"adjunctName",$row_log[$keyName]);
-            if (is_array($adjunct_display)) {
+            if (is_array($adjunct_display) && !empty($adjunct_display)) {
                 $fermentables_adjunct .= "<a href=\"#adjunctModal".$adjunct_display[0]['id']."\" data-toggle=\"modal\">".$row_log[$keyName]."</a>";
                 $modal_body = "";
                 // Build Modal
