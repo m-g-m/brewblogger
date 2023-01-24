@@ -20,7 +20,7 @@ include (LIB.'common.lib.php');
 require_once (ADMIN_LIBRARY.'color.lib.php');
 include (INCLUDES.'version.inc.php');
 
-$imageSrc = "images/";
+$imageSrc = $sub_directory."/images/";
 
 if ($section == "admin") {
 	$container_main = "container-fluid";
