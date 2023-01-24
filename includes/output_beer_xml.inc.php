@@ -10,7 +10,7 @@ include (INCLUDES.'scrubber.inc.php');
 $colname_log = "-1";
 if (isset($_GET['id'])) {
 	if (is_numeric($_GET['id'])) {
-  			$colname_log = (get_magic_quotes_gpc()) ? $_GET['id'] : addslashes($_GET['id']);
+  			$colname_log = addslashes($_GET['id']);
 	}
 	else { echo "Not a valid request."; die;  }
 
@@ -18,12 +18,12 @@ if (isset($_GET['id'])) {
 
 $source = "1";
 if (isset($_GET['source'])) {
-	$source = (get_magic_quotes_gpc()) ? $_GET['source'] : addslashes($_GET['source']);
+	$source =  addslashes($_GET['source']);
 }
 
 $colname_style = "1";
 if (isset($_GET['brewStyle'])) {
-	$colname_style = (get_magic_quotes_gpc()) ? $_GET['brewStyle'] : addslashes($_GET['brewStyle']);
+	$colname_style = addslashes($_GET['brewStyle']);
 }
 
 if ($source == "brewLog") {
@@ -130,15 +130,15 @@ $xml_output .= "<RECIPES>\n";
 			if ($row_style['brewStyleFG'] == "") {$xml_output .= "\t\t\t<FG_MAX>" . "Varies" . "</FG_MAX>\n"; }
 			if ($row_style['brewStyleFG'] != "") {$xml_output .= "\t\t\t<FG_MAX>" . number_format($row_style['brewStyleFG'],3) . "</FG_MAX>\n"; }
 			if ($row_style['brewStyleIBU'] == "") { $xml_output .= "\t\t\t<IBU_MIN>" . "Varies" . "</IBU_MIN>\n"; }
-			if ($row_style['brewStyleIBU'] != "") { $xml_output .= "\t\t\t<IBU_MIN>" . number_format($row_style['brewStyleIBU'],1) . "</IBU_MIN>\n"; }
+			if ($row_style['brewStyleIBU'] != "") { $xml_output .= "\t\t\t<IBU_MIN>" . number_format(floatval($row_style['brewStyleIBU']),1) . "</IBU_MIN>\n"; }
 			if ($row_style['brewStyleIBU'] == "") { $xml_output .= "\t\t\t<IBU_MAX>" . "Varies" . "</IBU_MAX>\n"; }
-			if ($row_style['brewStyleIBU'] != "") { $xml_output .= "\t\t\t<IBU_MAX>" . number_format($row_style['brewStyleIBUMax'],1) . "</IBU_MAX>\n"; }
+			if ($row_style['brewStyleIBU'] != "") { $xml_output .= "\t\t\t<IBU_MAX>" . number_format(floatval($row_style['brewStyleIBUMax']),1) . "</IBU_MAX>\n"; }
 			if ($row_style['brewStyleSRM'] == "") { $xml_output .= "\t\t\t<COLOR_MIN>" . "Varies" . "</COLOR_MIN>\n"; }
-			if ($row_style['brewStyleSRM'] != "") { $xml_output .= "\t\t\t<COLOR_MIN>" . number_format($row_style['brewStyleSRM'],1) . "</COLOR_MIN>\n"; }
+			if ($row_style['brewStyleSRM'] != "") { $xml_output .= "\t\t\t<COLOR_MIN>" . number_format(floatval($row_style['brewStyleSRM']),1) . "</COLOR_MIN>\n"; }
 			if ($row_style['brewStyleSRM'] == "") { $xml_output .= "\t\t\t<COLOR_MAX>" . "Varies" . "</COLOR_MAX>\n"; }
-			if ($row_style['brewStyleSRM'] != "") { $xml_output .= "\t\t\t<COLOR_MAX>" . number_format($row_style['brewStyleSRMMax'],1) . "</COLOR_MAX>\n"; }
+			if ($row_style['brewStyleSRM'] != "") { $xml_output .= "\t\t\t<COLOR_MAX>" . number_format(floatval($row_style['brewStyleSRMMax']),1) . "</COLOR_MAX>\n"; }
 			if ($row_style['brewStyleABV'] == "") { $xml_output .= "\t\t\t<ABV_MIN>" . "Varies" . "</ABV_MIN>\n"; }
-			if ($row_style['brewStyleABV'] != "") { $xml_output .= "\t\t\t<ABV_MIN>" . number_format($row_style['brewStyleABV'],1) . "</ABV_MIN>\n"; }
+			if ($row_style['brewStyleABV'] != "") { $xml_output .= "\t\t\t<ABV_MIN>" . number_format(floatval($row_style['brewStyleABV']),1) . "</ABV_MIN>\n"; }
 			if ($row_style['brewStyleABV'] == "") { $xml_output .= "\t\t\t<ABV_MAX>" . "Varies" . "</ABV_MAX>\n"; }
 			if ($row_style['brewStyleABV'] != "") { $xml_output .= "\t\t\t<ABV_MAX>" . number_format($row_style['brewStyleABVMax'],1) . "</ABV_MAX>\n"; }
 		$xml_output .= "\t\t</STYLE>\n";
@@ -288,7 +288,7 @@ $xml_output .= "<RECIPES>\n";
 			$xml_output .= "\t\t\t\t<VERSION>1</VERSION>\n";
 			$xml_output .= "\t\t\t\t<TYPE>" . $row_log['brewYeastType'] . "</TYPE>\n";
 			$xml_output .= "\t\t\t\t<FORM>" . $row_log['brewYeastForm'] . "</FORM>\n";
-			$xml_output .= "\t\t\t\t<AMOUNT>" .($yeast_amount/1000). "</AMOUNT>\n";
+			$xml_output .= "\t\t\t\t<AMOUNT>" .(floatval($yeast_amount)/1000). "</AMOUNT>\n";
 			if (strpos($row_log['brewYeastAmount'], 'gr') !== false) $xml_output .= "\t\t\t\t<AMOUNT_IS_WEIGHT>TRUE</AMOUNT_IS_WEIGHT>\n";
 			$xml_output .= "\t\t\t\t<LABORATORY>" . $row_log['brewYeastMan'] . "</LABORATORY>\n";
 			$xml_output .= "\t\t\t</YEAST>\n";
