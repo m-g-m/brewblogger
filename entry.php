@@ -10,13 +10,13 @@ include (INCLUDES.'db_connect_log.inc.php');
 
 $dbTable = "brewing";
 if (isset($_GET['dbTable'])) {
-  $dbTable = (get_magic_quotes_gpc()) ? $_GET['dbTable'] : addslashes($_GET['dbTable']);
+       $dbTable = addslashes($_GET['dbTable'];
 }
 
 if ($action == "default") {
 	$style = "default";
 		if (isset($_GET['style'])) {
-  		$style = (get_magic_quotes_gpc()) ? $_GET['style'] : addslashes($_GET['style']);
+       		$style = addslashes($_GET['style'];
 		}
 	} 
 else 
@@ -936,7 +936,7 @@ if ($action == "verify") { ?>
 <input name="style" type="hidden" value="<?php echo $style; ?>" />
 <?php } ?>
 </form>
-<p class="medium">This form is emulates the BJCP Entry/Recipe Form Copyright ©2006 Beer Judge Certification Program rev. 070307</p>
+<p class="medium">This form is emulates the BJCP Entry/Recipe Form Copyright ï¿½2006 Beer Judge Certification Program rev. 070307</p>
 <?php if (($action == "print") || ($action == "verify")) { ?>
 <br style="page-break-after:always;">
 <table width="600" border="0" align="center" cellspacing="15">

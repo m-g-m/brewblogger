@@ -36,7 +36,7 @@ elseif ($page == "members") $sort = "realLastName";
 elseif ($page == "brewblog-list") $sort = "brewDate";
 else $sort = "default";
 if (isset($_GET['sort'])) {
-  $sort = (get_magic_quotes_gpc()) ? $_GET['sort'] : addslashes($_GET['sort']);
+  $sort = addslashes($_GET['sort']);
 }
 
 if ($page == "brewblog-list") $dir = "DESC";
@@ -77,7 +77,6 @@ if ($page == "current") {
 	$log = mysqli_query($connection,$query_log) or die (mysqli_error($connection));
 	$row_log = mysqli_fetch_assoc($log);
 	$totalRows_log = mysqli_num_rows($log);
-
 }
 
 if (($page == "brewblog-list") || (($page == "admin") && ($section == "brewblogs") && ($action == "manage"))) {
@@ -178,7 +177,6 @@ if (($page == "current") || ($page == "brewblog") || ($page == "profile")) {
 }
 
 
-/*
 // -----------------------------------------------------------------------------------------------
 // REVIEWS
 if (($page =="current") || ($page =="brewblog")) {
@@ -212,7 +210,6 @@ if (($page =="current") || ($page =="brewblog")) {
 	$totalPages_review = ceil($totalRows_review/$maxRows_review)-1;
 }
 // -----------------------------------------------------------------------------------------------
-*/
 
 // Recipe List
 if (($page == "recipe-list") || (($page == "admin") && ($section == "recipes") && ($action == "manage"))) {
@@ -255,12 +252,10 @@ if (($page == "recipe-list") || (($page == "admin") && ($section == "recipes") &
 // Recipe Detail pages
 
 if (($page == "recipe") || (($page == "recipePrint") && ($dbTable == "recipes"))) {
-
 	$query_log = sprintf("SELECT * FROM recipes WHERE id = '%s'", $colname_log);
 	$log = mysqli_query($connection,$query_log) or die (mysqli_error($connection));
 	$row_log = mysqli_fetch_assoc($log);
 	$totalRows_log = mysqli_num_rows($log);
-
 }
 
 // -----------------------------------------------------------------------------------------------
@@ -299,8 +294,7 @@ if (($page == "current") || ($page == "brewblog")) {
 
 }
 
-if ($page == "recipe") {
-
+if ($page == "recipe"&&!empty($row_log)) {
 	$awardNewID = "r".$row_log['id'];
 	$query_awards = sprintf("SELECT * FROM awards WHERE awardBrewID='%s'", $awardNewID);
 	$awards = mysqli_query($connection,$query_awards) or die (mysqli_error($connection));

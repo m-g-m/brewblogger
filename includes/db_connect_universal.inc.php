@@ -15,7 +15,7 @@ if (isset($_SESSION['loginUsername']) && !empty($_SESSION['loginUsername'])) $lo
 // Name
 
 $query_name = "SELECT * FROM brewer";
-if ((isset($_SESSION['uid'])) && (!empty($_SESSION['uid']))) $query_name .= sprintf(" WHERE uid=%s",$_SESSION['uid']);
+if ((isset($_SESSION['uid'])) && (!empty($_SESSION['uid']))) $query_name .= sprintf(" WHERE id=%s",$_SESSION['uid']);
 $name = mysqli_query($connection,$query_name) or die (mysqli_error($connection));
 $row_name = mysqli_fetch_assoc($name);
 $totalRows_name = mysqli_num_rows($name);

@@ -624,7 +624,7 @@ function award_count($source,$id) {
 
 function get_session_array_values($haystack,$needle,$needle_value) {
     $arrIt = new RecursiveIteratorIterator(new RecursiveArrayIterator($haystack));
-    $return = "";
+    $return = [];
     foreach ($arrIt as $sub) {
         $subArray = $arrIt->getSubIterator();
         if ($subArray[$needle] === $needle_value) {

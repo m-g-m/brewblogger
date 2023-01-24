@@ -127,7 +127,7 @@ if (FORCE_UPDATE) include(UPDATE.'update_3.0.0.php');
     	<?php include (INCLUDES.'alerts.inc.php'); ?>
     </div><!-- ./container -->
     <!-- ./ALERTS -->
-    <?php
+<?php
     if ((isset($_SESSION['loginUsername'])) && (DEBUG_SESSION_VARS)) include (DEBUG_SCRIPTS.'debug_session_vars.inc.php')
     ?>
     <?php if ($page == "admin") { ?>
@@ -174,7 +174,7 @@ if (FORCE_UPDATE) include(UPDATE.'update_3.0.0.php');
             <div class="page-header">
         		<h1><?php echo $header_output; ?></h1>
         	</div>
-        	<?phphttp://fontawesome.io/icon/exclamation-triangle
+        	<?php http://fontawesome.io/icon/exclamation-triangle
                 if (isset($_POST['amt'])) $amt = $_POST['amt'];
                 else $amt = $amt;
 				if (($page == "current") || ($page == "brewblog")) {

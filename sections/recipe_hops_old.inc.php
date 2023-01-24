@@ -27,7 +27,7 @@ if (!empty($row_log['brewHops1'])) {
             $hops_display = get_session_array_values($_SESSION['hops'],"hopsName",$row_log[$hop_name]);
             $hop_more_info_id = $i + 1;
 
-            if (is_array($hops_display)) {
+            if (is_array($hops_display)&&!empty($hops_display)) {
 
                 // Build Modal
                 $hops_modals .= "<div class=\"modal fade\" id=\"hopsModal".$hops_display[0]['id']."\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"hopsModalLabel".$hops_display[0]['id']."\">";
@@ -111,9 +111,9 @@ if (!empty($row_log['brewHops1'])) {
 
             // Name
             $hops .= "<td>" . "\n";
-            if (is_array($hops_display)) $hops .= "<a href=\"#hopsModal".$hops_display[0]['id']."\" data-toggle=\"modal\">";
+            if (is_array($hops_display)&&!empty($hops_display)) $hops .= "<a href=\"#hopsModal".$hops_display[0]['id']."\" data-toggle=\"modal\">";
             $hops .= $row_log[$hop_name];
-            if (is_array($hops_display)) $hops .= "</a>";
+            if (is_array($hops_display)&&!empty($hops_dispalay)) $hops .= "</a>";
             $hops .= "</td>" . "\n";
 
             // Time

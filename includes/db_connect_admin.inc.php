@@ -1,7 +1,7 @@
 <?php 
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
-  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
+  $theValue = addslashes($theValue) ;
 
   switch ($theType) {
     case "text":
@@ -30,7 +30,7 @@ $filter = "default";
 if ($row_user['userLevel'] == "1") $filter = "all";
 if ($row_user['userLevel'] == "2") $filter = $loginUsername;
 if (isset($_GET['filter'])) {
-  $filter = (get_magic_quotes_gpc()) ? $_GET['filter'] : addslashes($_GET['filter']);
+  $filter =  addslashes($_GET['filter']);
 }
 
 
@@ -42,12 +42,12 @@ if (($action == "list") && ($dbTable == "brewing")) {
 
 $sort = "brewDate";
 if (isset($_GET['sort'])) {
-  $sort = (get_magic_quotes_gpc()) ? $_GET['sort'] : addslashes($_GET['sort']);
+  $sort = addslashes($_GET['sort']);
 }
 
 $dir = "DESC";
 if (isset($_GET['dir'])) {
-  $dir = (get_magic_quotes_gpc()) ? $_GET['dir'] : addslashes($_GET['dir']);
+  $dir = addslashes($_GET['dir']);
 }
 
 
@@ -68,12 +68,12 @@ if (($action == "list") && ($dbTable == "recipes")) {
 
 $sort = "brewName";
 if (isset($_GET['sort'])) {
-  $sort = (get_magic_quotes_gpc()) ? $_GET['sort'] : addslashes($_GET['sort']);
+  $sort = addslashes($_GET['sort']);
 }
 
 $dir = "ASC";
 if (isset($_GET['dir'])) {
-  $dir = (get_magic_quotes_gpc()) ? $_GET['dir'] : addslashes($_GET['dir']);
+  $dir = addslashes($_GET['dir']);
 }
 
 
@@ -208,13 +208,13 @@ $totalRows_equip_profiles = mysqli_num_rows($equip_profiles);
 if (($action == "list") && (($dbTable == "styles") || ($dbTable == "hops") || ($dbTable == "malt"))) { 
 $dir = "ASC";
 if (isset($_GET['dir'])) {
-  $dir = (get_magic_quotes_gpc()) ? $_GET['dir'] : addslashes($_GET['dir']);
+  $dir = addslashes($_GET['dir']);
 }
 
 if ($dbTable == "styles") {
 	$sort = "brewStyleGroup,brewStyleNum";
 	if (isset($_GET['sort'])) {
-  		$sort = (get_magic_quotes_gpc()) ? $_GET['sort'] : addslashes($_GET['sort']);
+  		$sort = addslashes($_GET['sort']);
 		}
 
 
@@ -227,7 +227,7 @@ $totalRows_styles = mysqli_num_rows($styles);
 if ($dbTable == "hops") {
 	$sort = "hopsName";
 	if (isset($_GET['sort'])) {
-  		$sort = (get_magic_quotes_gpc()) ? $_GET['sort'] : addslashes($_GET['sort']);
+  		$sort = addslashes($_GET['sort']);
 		}
 
 
@@ -240,7 +240,7 @@ $totalRows_hops = mysqli_num_rows($hops);
 if ($dbTable == "malt") {
 	$sort = "maltName";
 	if (isset($_GET['sort'])) {
-  		$sort = (get_magic_quotes_gpc()) ? $_GET['sort'] : addslashes($_GET['sort']);
+  		$sort = addslashes($_GET['sort']);
 		}
 
 

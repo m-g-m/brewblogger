@@ -10,7 +10,7 @@
  * FOR FERMENTABLES, HOPS, WATER, YEAST
  * -----------------------------------------------
  */
-
+if (!empty($row_log)) {
 // Grist percentage calculations
 $totalExtract = 0;
 for ($i = 1; $i <= MAX_EXT; $i++) {
@@ -51,7 +51,7 @@ $total_grain = $totalGrain;
  */
 
 if ($amt != 0) {
-  $scale = $amt / $row_log['brewYield'];
+     $scale = floatval($amt) / floatval($row_log['brewYield']);
 }
 
 //Hop percentage calculations
@@ -84,5 +84,6 @@ include (SECTIONS.'recipe_fermentables_old.inc.php');
 include (SECTIONS.'recipe_non-fermentables_old.inc.php');
 include (SECTIONS.'recipe_hops_old.inc.php');
 include (SECTIONS.'recipe_yeast_old.inc.php');
+};
 ?>
 

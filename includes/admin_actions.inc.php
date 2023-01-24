@@ -16,7 +16,7 @@ if (($page == "brewblog-list") || ($page == "brewblog") || (($page == "admin") &
 }
 
 // build_public_url($page, $section, $action, $dbTable, $filter, $id, $base_url)
-
+if (is_array($row_log)&&!empty($row_log)) { //mgm debug
 // Edit
 // if (SEF) $edit_href = build_public_url("admin", $section, "edit", $dbTable, $filter, $row_log['id'], $base_url);
 // else
@@ -28,7 +28,7 @@ $actions_links_edit = "<a href=\"".$edit_href."\" data-toggle=\"tooltip\" data-p
 // else
 $duplicate_href = $base_url."admin/index.php?action=reuse&amp;dbTable=".$dbTable."&amp;id=".$row_log['id'];
 $actions_links_duplicate = "<a href=\"".$duplicate_href."\" role=\"button\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"Duplicate ".$row_log['brewName']."\"><span class=\"fa fa-clone\" title=\"Duplicate ".$row_log['brewName']."\"></span></a> ";
-
+}
 // Recalculate
 // if (SEF) $recalculate_href = build_public_url("admin", $section, "recalculate", $dbTable, $filter, $row_log['id'], $base_url);
 // else

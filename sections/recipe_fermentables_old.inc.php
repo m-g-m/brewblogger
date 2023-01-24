@@ -108,7 +108,7 @@ if (!empty($row_log['brewGrain1'])) {
         $fermentables_grain .= "</td>" . "\n";
         $fermentables_grain .= "<td>";
             $grains_display = get_session_array_values($_SESSION['grains'],"maltName",$row_log[$keyName]);
-            if (is_array($grains_display)) {
+            if (is_array($grains_display)&&(!empty($grains_display))) {
                 //$fermentables_grain .= "<a href=\"#\">".$row_log[$keyName]."</a>";
                 $fermentables_grain .= "<a href=\"#grainsModal".$grains_display[0]['id']."\" data-toggle=\"modal\">".$row_log[$keyName]."</a>";
                 $modal_body = "";
